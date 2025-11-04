@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Details - Archana Girase Technologies</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: #fff;
+        }
+        header, footer {
+            background-color: #0d1b2a;
+            padding: 20px;
+            text-align: center;
+        }
+        header img {
+            width: 60px;
+            vertical-align: middle;
+        }
+        header h1 {
+            display: inline;
+            margin-left: 15px;
+            font-size: 26px;
+            vertical-align: middle;
+        }
+        .container {
+            padding: 40px;
+            max-width: 700px;
+            margin: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .details {
+            text-align: left;
+            line-height: 1.6;
+        }
+        .apply-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: #00bcd4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .apply-btn:hover {
+            background-color: #0097a7;
+        }
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Archana Girase Technologies</h1>
+    </header>
+
+    <div class="container">
+        <h2>Job Details</h2>
+        <div class="details" id="job-description">
+            <!-- Job details will be populated by JavaScript -->
+        </div>
+        <a id="applyLink" class="apply-btn">Apply Now</a>
+    </div>
+
+    <footer>
+        <p>Archana Girase Technologies Pvt. Ltd.</p>
+        <p>Email: careers@agt.com | Phone: +91-9876543210</p>
+        <p>© 2025 Archana Girase Technologies. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const position = getQueryParam('position');
+        const jobDetails = {
+            "Software Engineer": {
+                title: "Software Engineer",
+                description: "As a Software Engineer, you will design, develop, and maintain scalable web applications. Collaborate with cross-functional teams to define, design, and ship new features.",
+                requirements: [
+                    "Bachelor’s degree in Computer Science or related field",
+                    "2+ years of experience in web development",
+                    "Proficiency in JavaScript, HTML, CSS, and modern frameworks",
+                    "Experience with REST APIs and databases"
+                ],
+                location: "Pune, India",
+                type: "Full-time"
+            },
+            "Product Manager": {
+                title: "Product Manager",
+                description: "As a Product Manager, you will lead product strategy, roadmap, and execution. Work closely with engineering, design, and marketing teams to deliver impactful products.",
+                requirements: [
+                    "Bachelor’s degree in Business, Engineering, or related field",
+                    "3+ years of experience in product management",
+                    "Strong communication and leadership skills",
+                    "Experience with Agile methodologies"
+                ],
+                location: "Remote / Pune, India",
+                type: "Full-time"
+            }
+        };
+
+        const job = jobDetails[position] || { title: position, description: "Details coming soon.", requirements: [], location: "N/A", type: "N/A" };
+
+        const descriptionHTML = `
+            <h3>${job.title}</h3>
+            <p><strong>Description:</strong> ${job.description}</p>
+            <p><strong>Location:</strong> ${job.location}</p>
+            <p><strong>Job Type:</strong> ${job.type}</p>
+            <p><strong>Requirements:</strong></p>
+            <ul>${job.requirements.map(req => `<li>${req}</li>`).join('')}</ul>
+        `;
+
+        document.getElementById('job-description').innerHTML = descriptionHTML;
+        document.getElementById('applyLink').href = `apply.html?position=${encodeURIComponent(position)}`;
+    </script>
+</body>
+</html>
