@@ -206,16 +206,13 @@
                 });
             }
         }
-
+        
         function submitForm(event) {
             event.preventDefault();
-            const form = event.target;
-            const name = form.name.value;
-            const email = form.email.value;
-            const position = getQueryParam('position');
-            document.getElementById('confirmation').innerText = `Thank you, ${name}, for applying to the ${position} position. We will contact you at ${email}.`;
-            form.reset();
+            // You can collect data here if needed
+            window.location.href = "thankyou.html"; // Redirect to thank you page
         }
+
     </script>
 </body>
 </html>
